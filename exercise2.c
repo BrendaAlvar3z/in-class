@@ -1,5 +1,4 @@
 //write a program to determine if a number entered by user is negative, positive or zero
-//write a program to determine if a number entered by user is odd or even
 
 #include <stdio.h>
 

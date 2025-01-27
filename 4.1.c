@@ -18,21 +18,14 @@ int main() {
 
     fclose(fptr);
 
+    // //seek and tell PRACTICE
 
-    //read the file
+    // FILE* fp;
+    // fp = fopen("hello.txt", "r");
 
-    fptr = fopen("hello.txt", "r");
+    // fseek(fp, 0, SEEK_END);
 
-    char contents[100];
-
-    if(fptr != NULL) {
-        while(fgets(contents, 100, fptr)) {
-            printf("%s", contents);
-        }
-    }
-    else {
-        printf("The file doesn't exist");
-    }
+    // printf("%ld\n", ftell(fp));
 
     return 0;
 }

@@ -16,22 +16,45 @@ int main()
 
     scores = calloc(numStudents, sizeof(*scores));
 
+    if (scores == NULL) {
+        fprintf(stderr, "memory allocation failed\n");
+        return 1; 
+    }
+
     for (int i = 0; i < numStudents; i++) {
-        int studentScore;
         printf("Enter the student score: ");
-        scanf("%d", &studentScore);
-        scores[i] = studentScore;
+        scanf("%d", &scores[i]);
     }
     
-    filePointer = fopen("ScoresFile.txt", "w");
+    filePointer = fopen("ScoresFile.bin", "wb");
+
+    if (filePointer == NULL) {
+        fprintf(stderr, "failed to open file for writting\n");
+        free(scores);
+        return 1; 
+    }
 
     for (int i = numStudents - 1; i >= 0; i--) {
         putw(scores[i], filePointer);
     }
 
     free(scores);
-
     fclose(filePointer);
 
-    return 0;
+    //READING FILE TO TEST IF CODE IS WORKING
+    // filePointer = fopen("ScoresFile.bin", "rb");
+
+    // if (filePointer == NULL) {
+    //     fprintf(stderr, "failed to open file\n");
+    //     return 1; 
+    // }
+
+    // for (int i = 0; i < numStudents; i++) {
+    //     int score = getw(filePointer);
+    //     printf("%d\n", score);
+    // }
+
+    // fclose(filePointer);
+
+    return 1;
 }
